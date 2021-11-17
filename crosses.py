@@ -14,12 +14,13 @@ class Game:
             if self.table[a-1][b-1] != '_':
                 print('Fatal error. Please be more attentive')
                 break
+
             if counter % 2 == 0:
                 self.table[a - 1][b - 1] = 'X̲'
-                self.print_table()
+
             elif counter % 2 == 1:
                 self.table[a - 1][b - 1] = 'O̲'
-                self.print_table()
+            self.print_table()
             counter += 1
 
     def generate_table(self):
