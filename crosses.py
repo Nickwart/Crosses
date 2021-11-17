@@ -7,27 +7,25 @@ class Game:
     def start_game(self):
         counter = 0
         while True:
-            print(f'Хід гравця №{counter % 2 + 1} \nЗробіть свій вибір')
-            a, b = int(input('Виберіть висоту: ')), int(input('Виберіть ширину: '))
+            print(f'Хід гравця №{counter % 2 + 1}, Зробіть свій вибір')
+            coords = input('Виберіть висоту та ширину: ')
+            a, b = int(coords[0]), int(coords[1])
+
+            if self.table[a-1][b-1] != '_':
+                print('Fatal error. Please be more attentive')
+                break
             if counter % 2 == 0:
-                if self.table[a][b] != 0:
-                    print('Fatal error. Please be more attentive')
-                    break
-                self.table[a][b] = 'X'
+                self.table[a - 1][b - 1] = 'X̲'
                 self.print_table()
-                counter += 1
             elif counter % 2 == 1:
-                if self.table[a][b] != 0:
-                    print('Fatal error. Please be more attentive')
-                    break
-                self.table[a][b] = 'Y'
+                self.table[a - 1][b - 1] = 'O̲'
                 self.print_table()
-                counter += 1
+            counter += 1
 
     def generate_table(self):
         main_list = []
         for i in range(15):
-            main_list.append([0 for _ in range(1, 16)])
+            main_list.append(['_' for _ in range(1, 16)])
         return main_list
 
     def print_table(self):
@@ -35,7 +33,6 @@ class Game:
             for j in i:
                 print(j, end=' | ')
             print()
-            print('-' * 59)
 
 
 game = Game()
