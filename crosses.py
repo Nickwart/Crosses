@@ -8,18 +8,18 @@ class Game:
         counter = 0
         while True:
             print(f'Хід гравця №{counter % 2 + 1}, Зробіть свій вибір')
-            coords = input('Виберіть висоту та ширину: ')
-            a, b = int(coords[0]), int(coords[1])
+            a = self.read_turn_a()
+            b = self.read_turn_b()
 
             if self.table[a-1][b-1] != '_':
-                print('Fatal error. Please be more attentive')
-                break
+                print('Будьте уважніше, це місце вже зайняте')
+                continue
 
             if counter % 2 == 0:
-                self.table[a - 1][b - 1] = 'X̲'
+                self.table[a - 1][b - 1] = 'X'
 
             elif counter % 2 == 1:
-                self.table[a - 1][b - 1] = 'O̲'
+                self.table[a - 1][b - 1] = 'O'
             self.print_table()
             counter += 1
 
@@ -34,6 +34,14 @@ class Game:
             for j in i:
                 print(j, end=' | ')
             print()
+
+    def read_turn_a(self):
+        res = int(input('Виберіть висоту: '))
+        return res
+
+    def read_turn_b(self):
+        res = int(input('Виберіть ширину: '))
+        return res
 
 
 game = Game()
