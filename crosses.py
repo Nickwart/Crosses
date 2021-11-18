@@ -8,8 +8,7 @@ class Game:
         counter = 0
         while True:
             print(f'Хід гравця №{counter % 2 + 1}, Зробіть свій вибір')
-            a = self.read_turn_a()
-            b = self.read_turn_b()
+            a, b = self.read_turn()
 
             if self.table[a-1][b-1] != '_':
                 print('Будьте уважніше, це місце вже зайняте')
@@ -35,13 +34,13 @@ class Game:
                 print(j, end=' | ')
             print()
 
-    def read_turn_a(self):
-        res = int(input('Виберіть висоту: '))
-        return res
+    def read_turn(self):
+        height_point = int(input('Виберіть висоту: '))
+        width_point = int(input('Виберіть ширину: '))
+        return height_point, width_point
 
-    def read_turn_b(self):
-        res = int(input('Виберіть ширину: '))
-        return res
+    def win_conditions(self):
+        pass
 
 
 game = Game()
