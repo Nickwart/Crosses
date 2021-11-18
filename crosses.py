@@ -17,7 +17,7 @@ class Game:
             if counter % 2 == 0:
                 self.table[a - 1][b - 1] = 'X'
 
-            elif counter % 2 == 1:
+            else:
                 self.table[a - 1][b - 1] = 'O'
             self.print_table()
             counter += 1
@@ -38,6 +38,11 @@ class Game:
         height_point = int(input('Виберіть висоту: '))
         width_point = int(input('Виберіть ширину: '))
         return height_point, width_point
+
+    def detect_five_in_a_row(self):
+        pass
+
+
 
     def win_conditions(self):
         pass
