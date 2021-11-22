@@ -1,3 +1,4 @@
+import time
 from random import randint
 
 
@@ -11,17 +12,30 @@ class Human:
         self.outer_ass = outer_ass
 
     @staticmethod
-    def possibility(num):
+    def birth_timer():
+        counter = 9
+        while True:
+            print(f'До народження лишилось {counter} (уявних) місяців')
+            counter -= 1
+            time.sleep(1)
+            if counter == 0:
+                print('О, ні, Сара! Воно таки вилізло!!!')
+                break
+
+    def possibility(self, num):
         poss = randint(0, 100)
         if poss in range(0, num):
             return True
         else:
             return False
 
-    choices = {gender: {male: 'male', fmale: 'female'},
-               inner_ass: {one: 'pinky', two: 'RED', three: "nigga's black whole"}
-               outer_ass: {}
-               }
+    gender_list = ['male', 'female']
+    inner_ass = ['pinky', 'RED', "nigga's black_door"]
+    outer_ass = ['white', 'jew', 'nigger']
+
+    @classmethod
+    def add_outer_ass_color(cls, color):
+        cls.outer_ass.append(color)
 
     def __add__(self, other):
         if self.gender == other.gender:
@@ -35,8 +49,6 @@ class Human:
                 child.gender = self.gender
             else:
                 child.gender = other.gender
-            for key, value in self.choices:
-                pass
 
 
 class Man(Human):
@@ -51,3 +63,9 @@ class Woman(Human):
         super(Woman, self).__init__(*args, **kwargs)
         self.deepnest = deepnest
         self.gender = gender
+
+
+Human.add_outer_ass_color('malinovy')
+
+print(Human.outer_ass)
+Human.birth_timer()
